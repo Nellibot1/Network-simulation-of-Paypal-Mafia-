@@ -1,0 +1,155 @@
+\documentclass[12pt,a4paper,twocolumn]{article}
+\usepackage[margin=2cm,columnsep=0.8cm]{geometry} 
+\usepackage{setspace}                    
+\usepackage{authblk}                      
+\usepackage{graphicx}                    
+\usepackage{subcaption}                 
+\usepackage{float}                       
+\usepackage{booktabs}                   
+\usepackage{amsmath,amsfonts,amssymb}   
+\usepackage{siunitx}                  
+\usepackage[round,sort&compress]{natbib}
+\usepackage{hyperref}                    
+\usepackage{caption}                    
+\usepackage{fancyhdr}                   
+\usepackage{xcolor}                    
+\usepackage{libertine}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}
+
+\fancyhf{}
+\fancyhead[L]{\textit{Tech CEOs Network Sim}}  % Edit the running title (short title)
+\fancyhead[R]{\thepage}
+
+% For incoming students, feel free to use your home university here
+\title{The PayPal-Mafia \\ A Tech CEOs Network Simulation \\
+\small Group Assignment for Computational Modelling of Social System Group: 21} % Pick your title (you may go creative here)
+
+\author[1]{Student 1} % Each author should be listed
+\author[2]{Student 2}
+\author[3]{Student 3}
+\affil[1]{Graz University of Technology, Graz, Austria}
+\affil[2]{University of Graz, Graz, Austria}
+\date{\today}
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\end{abstract}
+
+\section{Introduction}
+\label{sec:intro}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+
+\section{Stage 2}
+
+\begingroup
+    \fontsize{7pt}{8pt}\selectfont
+    \begin{verbatim}  
+def preprocess_article(text):
+    # Clean HTML and special characters
+    text = re.sub(r'<.*?>', '', text)
+    text = re.sub(r'[^\w\s]', '', text)
+    
+    sentences = nltk.sent_tokenize(text)
+    words = [nltk.word_tokenize(sentence) for 
+    sentence in sentences]
+    
+    stop_words = set(stopwords.words('english'))
+    filtered_words = [[w.lower() for w in sentence 
+    if w.lower() not in stop_words] 
+                     for sentence in words]
+    
+    #POS 
+    pos_tags = [nltk.pos_tag(sentence) for 
+    sentence in filtered_words]
+    
+    #NER
+    named_entities = []
+    for sentence in filtered_words:
+        named_entities.extend(nltk.ne_chunk
+        (nltk.pos_tag(sentence)))
+    
+    #Calculate readability
+    readability_score = textstat.flesch_reading_ease(text)
+    
+    return {
+        'cleaned_text': ' '.join([' '.
+        join(sentence) for sentence in filtered_words]),
+        'pos_distribution': get_pos_distribution(pos_tags),
+        'named_entities': extract_named_entities
+        (named_entities),
+        'readability': readability_score
+    }
+    \end{verbatim}  
+\endgroup
+
+
+\begingroup
+    \fontsize{7pt}{8pt}\selectfont
+    \begin{verbatim}  
+##################################################
+# Load articles
+df = pd.read_csv("Preprocessing/
+preprocessed_articles.csv")
+articles = df["Text"].astype(str).tolist()
+
+# Load labels from test_data.csv
+test_labels_df = pd.read_csv("test_data.csv")
+labels = test_labels_df["real_news "].
+map({'yes': 1, 'no': 0}).tolist()
+
+vectorizer = TfidfVectorizer(max_features=3000)
+features = vectorizer.fit_transform(articles)
+##################################################
+\end{verbatim}  
+\endgroup
+
+\section{Lorem Ipsum Section}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\subsection*{Lorem Ipsum Section}
+Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+\vspace{-6pt}
+
+\subsection*{Lorem Ipsum Section}
+
+\noindent Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+
+\section{Limitations: State limitations of your project and future work to assess them.}
+
+Our project shows how influence could spread in a network of tech CEOs, companies and political actors, but the model has several important limitations. Many of them come from the fact that we built the network by hand and chose the parameters ourselves, without using a large empirical dataset. We are going to discuss the most important points below.
+
+\subsection{The network is built by hand and is incomplete}
+We selected the nodes (people, companies and institutions) based on our own knowledge of the "PayPal Mafia" and the current US tech-political landscape. This means that the network only reflects a small part of reality. Other important actors, such as Microsoft, Google, Meta, Jeff Bezos with its Amazon or non-US tech elites, are not included. A different selection of nodes would probably change the results. The network should therefore be seen as one possible representation, not as the full picture.
+
+\subsection{The network is static}
+The graph represents a single snapshot in time. In reality, relationships between people and companies change. Alliances can form, weaken or break — for instance the public conflict between Elon Musk and Donald Trump in 2025 shows that political alignments are not stable. Our model cannot capture these changes over time. We are limited here with the current situation. 
+
+\subsection{The edge weights are not measured empirically}
+We assigned the weights of the edges (for example 0.90 for "founder", 0.45 for "$vc_ecosystem$") based on our own intuition about how strong a relationship is. We did not use empirical sources such as the number of co-investments, board memberships or news co-mentions. Different weights would lead to different cascades, so the exact numerical results should not be over interpreted.
+
+\subsection{Influence is not directly measurable.}
+Concepts such as "power", "threshold" or "infrastructural importance" cannot be observed directly in the real world. There is no dataset that says "Elon Musk has a power score of 1.00". We therefore had to translate these abstract sociological concepts into numerical values between 0 and 1 ourselves, based on plausible reasoning. This is a general limitation of computational modelling of social systems: many of the most interesting variables are latent and have to be approximated.
+
+\subsection{We did not perform a full sensitivity analysis.}
+Each parameter is a single point value. We do not test what happens if we change the weights or thresholds by, for example, +-20 \%. A proper sensitivity analysis or a Monte Carlo simulation would be needed to show how robust our results are.
+
+\subsection{Limited availability of empirical data on elite networks.}
+There is no public, complete dataset that lists all the relevant relationships between tech CEOs, their companies, investors, and political actors. Information about who invests in whom, who advises whom, or who is politically aligned with whom is spread across news articles, interviews, and partial databases such as LittleSis or Crunchbase. Because of this, we had to build the network by hand, based on publicly known facts. This is a structural limitation of working on elite influence: the people we study often have an interest in keeping their relationships informal or non-public.
+
+\subsection{Social influence is more complex than any model can capture.}
+Real influence between people and institutions includes emotions, trust, media framing, personal history, financial dependencies, ideology, and many other factors. A simulation always has to reduce this complexity to a small number of mechanisms (in our case $->$ weighted neighbors and a threshold). This simplification is necessary to make the model understandable and computable, but it means that the simulation can only represent one specific aspect of influence and not the full social reality.
+
+\subsection{Summary of Limitations}
+The main limitations of our project was not coding errors or wrong assumptions, but the overall structural limitations of gathering data of elite influence with a network simulation. Because data of elite relationships is mostly incomplete and hardy accessible for the public (key variables like power, influence, threshold are not directly observable). 
+The simulation results cannot be validated against a clear real world data truth base. Our simulation should therefore be understood as a theoretical and exploratory tool that makes assumptions.
+
+
+% Everything up here counts for the page limit 
+\newpage
+
+
+\end{document}
