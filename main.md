@@ -484,32 +484,17 @@ real world data truth base. Our simulation should therefore be
 understood as a theoretical and exploratory tool that makes assumptions.
 
 # Conclusion
+The research question of this paper was whether actors connected to the PayPal network sit in structurally advantaged positions inside a technology and politics influence network and whether they spread influence further than a comparable group of randomly chosen elite actors.
 
-We set out to ask whether PayPal linked actors sit in strong positions
-inside a technology and politics influence network, and whether they
-spread influence further than a comparable random group. Inside the
-model, the answer is a careful yes. The PayPal figures, above all Musk
-and Thiel, together with the PayPal company, rank among the most central
-nodes on every measure, and a cascade started from the PayPal core
-reaches more than half the network, including government and defense,
-solemnly in two steps. But the advantage is shared with government
-actors and it is moderate rather than singular. The PayPal group beats
-roughly 63 percent of random elite trios, and a different, carefully
-chosen group spreads further. What really decides the outcome is
-structural position next to a tight, like minded core, not a PayPal
-origin in and of itself. More than anything, the exercise shows both the
-value and the limits of computational modelling for studying social and
-political influence. A formal model forces the assumptions out into the
-open, lets us test them, and stops us making claims that a written story
-can leave comfortably vague. Here it even revealed that one of our own
-parameters quietly does no work at all. Yet a model is only ever as
-trustworthy as the data and the assumptions behind it. Used with care,
-and kept clearly apart from real measurement, a model like this is a
-helpful companion to the historical and sociological study of elite
-power, not a replacement for it. So we end where we began. The
-technology we use may well shape how we think, and asking who shapes
-that technology is a question worth taking seriously, even when our best
-answer is a model that admits how much it still leaves out.
+For the first question the answer based on our simulation is yes but with some restrictions. The centrality analysis shows that Elon Musk has the highest betweenness and degree centrality of the whole network and Peter Thiel, David Sacks and the PayPal company also rank among the top nodes on every measure. So the PayPal actors do hold strong bridging and connecting positions. However the same top positions are also occupied by Donald Trump and the US government. Trump even leads on eigenvector and closeness centrality. This means the structural advantage in our model is not held by the tech actors alone but is shared with central political actors.
+
+For the second question the result is more careful. When we start the cascade from the three PayPal seeds (Musk, Thiel and Sacks) the influence reaches 15 of 25 nodes in only two steps including government and defense nodes. Compared to 1000 random groups of three persons the PayPal group beats about 63 percent of them and matches or beats about 67 percent. So the PayPal seeds do spread influence further than the average random elite group but the advantage is moderate rather than singular. The scenario comparison even shows that a different group (the venture capital and defense tech actors) reaches 19 nodes which is more than the PayPal core itself. This tells us that the spread depends more on the structural position of the starting group than on the PayPal origin itself.
+
+The sensitivity analysis adds another point to the result. The cascade size reacts as expected when we change the thresholds but the infrastructure coefficient (0.0 0.5 or 1.0) does not change any final cascade size. Since this term appears in both the numerator and the denominator of the adoption ratio it cancels out for this network. We see this as a useful finding because it pushed us to look at our own model more critically and to see that not every parameter we added actually does work.
+
+Overall the simulation supports the qualitative claim from the literature that the PayPal network sits in a strong position between technology and politics but it does not show that they are uniquely powerful. The cascade behaviour is driven by structural position and dense ties between similar actors not by a "PayPal Mafia" identity on its own. The model also shows the value and the limits of using a simulation for this kind of question. A formal model forces us to write down our assumptions and to test them but it can also only be as good as the data and the parameters that we put in.
+
+So coming back to the questions we started with. Yes the technology we use can shape how we think and yes the people behind these technologies do hold structurally strong positions in our simulated network. But the answer to "who shapes the technologies" is not a single closed group like the PayPal Mafia. It is a wider mix of technology actors and political institutions whose influence depends on where they sit in the network and how strongly they are connected to the rest.
 
 [^1]: [GitHub
     repository](https://github.com/Nellibot1/Network-simulation-of-Paypal-Mafia-)
